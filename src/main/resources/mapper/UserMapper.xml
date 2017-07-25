@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xingyue.domain.mapper.UserMapper">
+    <select id="listUser" resultType="com.xingyue.domain.module.user.UserInfo">
+        select user_id as userId,user_name as userName from user
+        <where>
+            <if test="sex != null">
+                and sex = #{sex}
+            </if>
+            <if test="minAge != null">
+                and age &gt; #{minAge}
+            </if>
+        </where>
+    </select>
+</mapper>
